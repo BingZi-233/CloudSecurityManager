@@ -39,9 +39,6 @@ class TokenBucket(
      * 尝试获取令牌。如果成功获得令牌，则返回true，否则返回false
      */
     fun tryGetToken(): Boolean {
-        if (getToken() > 0) {
-            return true
-        }
-        return false
+        return getToken() > 0
     }
 }
