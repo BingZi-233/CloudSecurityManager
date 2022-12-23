@@ -7,6 +7,7 @@ import com.comphenix.protocol.events.PacketAdapter
 import com.comphenix.protocol.events.PacketEvent
 import online.bingzi.cloud.securityManager.internal.util.TokenBucket
 import org.bukkit.event.player.PlayerJoinEvent
+import org.bukkit.event.player.PlayerQuitEvent
 import org.bukkit.plugin.Plugin
 import taboolib.common.LifeCycle
 import taboolib.common.platform.Awake
@@ -26,6 +27,13 @@ object NetPackEvent {
         val name = event.player.name
         windowClickTokenBucket[name] = TokenBucket(8)
         setCreativeSlotTokenBucket[name] = TokenBucket(8)
+    }
+
+    @SubscribeEvent
+    fun onEvent(event: PlayerQuitEvent) {
+        val name = event.player.name
+        windowClickTokenBucket.remove(name)
+        setCreativeSlotTokenBucket.remove(name)
     }
 
     @Awake(LifeCycle.ENABLE)
