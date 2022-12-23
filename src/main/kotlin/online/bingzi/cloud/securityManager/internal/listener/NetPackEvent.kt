@@ -25,8 +25,8 @@ object NetPackEvent {
     @SubscribeEvent
     fun onEvent(event: PlayerJoinEvent) {
         val name = event.player.name
-        windowClickTokenBucket[name] = TokenBucket(8)
-        setCreativeSlotTokenBucket[name] = TokenBucket(8)
+        windowClickTokenBucket[name] = TokenBucket(10)
+        setCreativeSlotTokenBucket[name] = TokenBucket(10)
     }
 
     @SubscribeEvent
