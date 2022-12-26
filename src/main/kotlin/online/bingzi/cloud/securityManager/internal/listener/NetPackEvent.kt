@@ -59,7 +59,7 @@ object NetPackEvent {
                     }
 
                     PacketType.Play.Client.SET_CREATIVE_SLOT -> {
-                        setCreativeSlotTokenBucket[name]!!.let {
+                        /*setCreativeSlotTokenBucket[name]!!.let {
                             if (!it.tryGetToken()) {
                                 warning("玩家 $name 触发攻击检测，已被服务器踢出")
                                 submit {
@@ -67,7 +67,7 @@ object NetPackEvent {
                                 }
                                 event.isCancelled = true
                             }
-                        }
+                        }*/
                     }
                 }
             }
