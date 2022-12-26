@@ -25,8 +25,8 @@ object NetPackEvent {
     @SubscribeEvent
     fun onEvent(event: PlayerJoinEvent) {
         val name = event.player.name
-        windowClickTokenBucket[name] = TokenBucket(10)
-        setCreativeSlotTokenBucket[name] = TokenBucket(10)
+        windowClickTokenBucket[name] = TokenBucket(50)
+        setCreativeSlotTokenBucket[name] = TokenBucket(50)
     }
 
     @SubscribeEvent
@@ -51,7 +51,7 @@ object NetPackEvent {
                             if (!it.tryGetToken()) {
                                 warning("玩家 $name 触发攻击检测，已被服务器踢出")
                                 submit {
-                                    event.player.kickPlayer("§c检测到您的攻击行为，已被服务器踢出")
+                                    event.player.kickPlayer("timed out")
                                 }
                                 event.isCancelled = true
                             }
@@ -63,7 +63,7 @@ object NetPackEvent {
                             if (!it.tryGetToken()) {
                                 warning("玩家 $name 触发攻击检测，已被服务器踢出")
                                 submit {
-                                    event.player.kickPlayer("§c检测到您的攻击行为，已被服务器踢出")
+                                    event.player.kickPlayer("timed out")
                                 }
                                 event.isCancelled = true
                             }
